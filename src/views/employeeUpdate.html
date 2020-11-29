@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <script>
+
+var employees = JSON.parse(localStorage.getItem("myEmp")); //get saved data anytime
+
+function addEmp(){
+    console.log('funciton caleed');
+    console.log(document.getElementsById("name"));
+    console.log(document.getElementById("name"));
+    var name= document.getElementById("name");
+    var dept= document.getElementsByName('dept');
+
+}
+
+
+function generateEmployeeTable(){
+  //console.log(employees);
+ // console.log(employees.length);
+  var body = document.body;
+  var table = document.createElement('Table');
+  table.border = '2'
+  var tableBody = document.createElement('tablebody')
+  table.appendChild(tableBody);
+ var tr = document.createElement('tr');
+ var td1 = document.createElement('td');
+ var td2 = document.createElement('td');
+ td1.appendChild(document.createTextNode('Name'));
+ td2.appendChild(document.createTextNode('Department'));
+ tr.appendChild(td1);
+ tr.appendChild(td2);
+ tableBody.appendChild(tr);
+
+ for(var j =0; j<employees.length; j++){
+  var tr =  document.createElement('tr');
+  var td1 = document.createElement('td');
+  td1.appendChild(document.createTextNode(employees[j].name));
+  var td2 = document.createElement('td');
+  td2.appendChild(document.createTextNode(employees[j].department));
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tableBody.appendChild(tr);
+ }
+  body.appendChild(table);
+}
+
+        </script>
+    </head>
+    <body>
+
+
+        <div>
+            <h1>Update Employee Details</h1>
+            <script>generateEmployeeTable()</script>
+          
+        </div>
+        <form>
+        <div>
+            <br>
+            <br>
+
+            <div>
+                <label> Employee Name</label> 
+                <input type='text' id ="name" name='name' required>
+
+                <label> Department</label> 
+                <input type='text' name ='dept' required>
+
+                <button onClick ='addEmp()'> Add</button>
+            
+             </div>
+
+            </div>
+
+        </form>
+           
+        </div>
+
+
+        </body>
+
+    </body>
+</html>
